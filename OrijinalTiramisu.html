@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İnteraktif Orijinal Tiramisu Tarifi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background-color: #fdfaf6;
+            color: #4a4a4a;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .recipe-card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .recipe-header {
+            background-color: #8d6e63;
+            color: #ffffff;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .recipe-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .recipe-header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        .tabs {
+            display: flex;
+            background-color: #a1887f;
+            border-bottom: 3px solid #795548;
+        }
+
+        .tab-button {
+            flex-grow: 1;
+            padding: 15px 20px;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            color: #ffffff;
+            font-size: 1.1em;
+            font-weight: 400;
+            transition: background-color 0.3s, color 0.3s;
+            outline: none;
+        }
+
+        .tab-button:hover {
+            background-color: #bcaaa4;
+        }
+
+        .tab-button.active {
+            background-color: #ffffff;
+            color: #795548;
+            border-bottom: 3px solid #795548;
+            margin-bottom: -3px;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 30px;
+            animation: fadeIn 0.5s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #795548;
+            border-bottom: 2px solid #efebe9;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 15px;
+        }
+
+        .ingredient-list li, .steps-list li {
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 15px;
+            cursor: pointer;
+            transform: scale(1.2);
+            accent-color: #8d6e63;
+        }
+
+        .references p {
+            font-size: 0.95em;
+            margin-bottom: 15px;
+        }
+
+        .references a {
+            color: #8d6e63;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .references a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #efebe9;
+            font-size: 0.9em;
+            color: #757575;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="recipe-card">
+        <header class="recipe-header">
+            <h1>Orijinal Tiramisu</h1>
+            <p>"Le Beccherie" Restoranının Tescilli Reçetesi (1972)</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'Ingredients')">Malzemeler</button>
+            <button class="tab-button" onclick="openTab(event, 'Instructions')">Tarif</button>
+            <button class="tab-button" onclick="openTab(event, 'References')">Referanslar ve Tarihçe</button>
+        </div>
+
+        <div id="Ingredients" class="tab-content active">
+            <h2>Malzemeler (4 Yumurtalı Versiyon)</h2>
+            <ul class="ingredient-list">
+                <li><input type="checkbox"><strong>4 adet</strong> büyük boy, taze yumurtanın sarısı</li>
+                <li><input type="checkbox"><strong>165-170 gr</strong> toz şeker</li>
+                <li><input type="checkbox"><strong>330-350 gr</strong> kaliteli Mascarpone peyniri (oda sıcaklığında)</li>
+                <li><input type="checkbox"><strong>Yaklaşık 20-24 adet</strong> Savoiardi (kedi dili) bisküvisi</li>
+                <li><input type="checkbox"><strong>300 ml (1.5 su bardağı)</strong> sert demlenmiş ve tamamen soğutulmuş kahve</li>
+                <li><input type="checkbox">Üzeri için bolca <strong>kaliteli, şekersiz kakao tozu</strong></li>
+            </ul>
+        </div>
+
+        <div id="Instructions" class="tab-content">
+            <h2>Yapılış Adımları</h2>
+            <ol class="steps-list">
+                <li><input type="checkbox"><strong>Hazırlık:</strong> Kahveyi demleyin ve tamamen soğuması için geniş bir kaseye alıp kenarda bekletin.</li>
+                <li><input type="checkbox"><strong>Kremayı Hazırlama:</strong> Geniş bir kapta yumurta sarılarını ve şekeri, mikserle rengi açılıp krema kıvamına gelene kadar (yaklaşık 5-7 dakika) çırpın.</li>
+                <li><input type="checkbox"><strong>Mascarpone'yi Ekleme:</strong> Oda sıcaklığındaki mascarpone peynirini çırpılmış yumurtalı karışıma bir spatula ile yavaşça, alttan üste katlayarak yedirin. Bu aşamada mikser kullanmayın.</li>
+                <li><input type="checkbox"><strong>Bisküvileri Islatma:</strong> Kedi dili bisküvilerini tek tek soğuk kahveye sadece 1-2 saniye batırıp hemen çıkarın ve servis kabınızın tabanını kaplayacak şekilde dizin.</li>
+                <li><input type="checkbox"><strong>Katmanları Oluşturma:</strong> Bisküvi katmanının üzerine mascarpone kremasının yarısını yayın. Üzerine bir kat daha kahveye batırılmış bisküvi dizin ve kalan krema ile kaplayın.</li>
+                <li><input type="checkbox"><strong>Dinlendirme (En Önemli Adım):</strong> Üzerini streç filmle kapatıp buzdolabında **en az 8 saat, ideali bir gece** dinlendirin.</li>
+                <li><input type="checkbox"><strong>Servis:</strong> Servisten hemen önce üzerine süzgeçle bolca şekersiz kakao eleyin.</li>
+            </ol>
+        </div>
+
+        <div id="References" class="tab-content">
+            <h2>Kaynaklar ve Tarihçe</h2>
+            <p>
+                Bu tarif, İtalya'nın Treviso şehrindeki <a href="https://www.lacucinaitaliana.it/news/in-primo-piano/la-vera-storia-del-tiramisu/" target="_blank" rel="noopener noreferrer">"Le Beccherie" restoranında doğmuş</a> ve dünyaya yayılmış olan orijinal Tiramisu tarifine dayanmaktadır. Tarif, alkol veya yumurta akı içermemesiyle bilinir.
+            </p>
+            <p>
+                <strong>Resmi Tescil:</strong> "Le Beccherie" restoranının orijinal Tiramisu tarifi, <strong>15 Ekim 2010</strong> tarihinde, noter huzurunda <a href="https://www.accademiaitalianadellacucina.it/" target="_blank" rel="noopener noreferrer">İtalyan Mutfak Akademisi (Accademia Italiana della Cucina)</a> tarafından resmi olarak tescil edilmiştir. Bu tescil işlemi, tarifin kökenini ve otantik versiyonunu koruma altına almıştır, <a href="https://www.ilgiornaledelcibo.it/storia-del-tiramisu-le-origini-e-la-ricetta-originale-del-dolce-italiano-piu-famoso/" target="_blank" rel="noopener noreferrer">çeşitli İtalyan gastronomi kaynakları tarafından da doğrulanmıştır</a>.
+            </p>
+            <p>
+                <strong>İlham Kaynağı:</strong> Tatlının ilham kaynağı, restoran sahibi Alba Campeol'e lohusalık döneminde enerji vermesi için hazırlanan ve "sbatudin" adı verilen şekerle çırpılmış yumurta sarısıdır. Bu nedenle orijinal tarif hem besleyici hem de alkolsüz olarak tasarlanmıştır.
+            </p>
+        </div>
+
+        <footer class="footer">
+            Afiyet olsun!
+        </footer>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+</body>
+</html>
